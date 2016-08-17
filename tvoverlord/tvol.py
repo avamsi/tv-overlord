@@ -245,24 +245,24 @@ def list(today):
 
     shows = Shows()
 
-        with click.progressbar(
-                shows,
-                item_show_func=tfunct,
-                show_percent=False,
-                show_eta=False,
-                width=Config.pb.width,
-                empty_char=style(Config.pb.empty_char,
-                                 fg=Config.pb.dark,
-                                 bg=Config.pb.dark),
-                fill_char=style(Config.pb.fill_char,
-                                fg=Config.pb.light,
-                                bg=Config.pb.light),
-                bar_template=Config.pb.template,
-        ) as bar:
-            for series in bar:
-                if series.is_missing(today):
-                    fp.standard_print(series.show_missing())
-        fp.done()
+    with click.progressbar(
+            shows,
+            item_show_func=tfunct,
+            show_percent=False,
+            show_eta=False,
+            width=Config.pb.width,
+            empty_char=style(Config.pb.empty_char,
+                             fg=Config.pb.dark,
+                             bg=Config.pb.dark),
+            fill_char=style(Config.pb.fill_char,
+                            fg=Config.pb.light,
+                            bg=Config.pb.light),
+            bar_template=Config.pb.template,
+    ) as bar:
+        for series in bar:
+            if series.is_missing(today):
+                fp.standard_print(series.show_missing())
+    fp.done()
 
 
 @tvol.command(context_settings=CONTEXT_SETTINGS)
@@ -340,8 +340,8 @@ def nondbshow(search_string, count, ignore):
             if not L.ips_match(
                     Config.ip,
                     parts_to_match=Config.parts_to_match):
-            L.message()
-            sys.exit(1)
+                L.message()
+                sys.exit(1)
 
     nons = Show(show_type='nondb')
     nons.non_db(search_string, count)

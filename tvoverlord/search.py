@@ -281,8 +281,10 @@ class Search(object):
                     "S%sE%s" % (self.season.rjust(2, '0'),
                                 self.episode.rjust(2, '0'))
                 )
-                click.echo(final_name)
-            downloader = self.engine.Provider()
+            else:
+                final_name = '%s.nzb' % (self.show_name)
+
+            downloader = self.newsgroup_engines[0].Provider()
             downloaded_filename = downloader.download(
                 chosen_show, destination, final_name)
 

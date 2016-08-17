@@ -342,8 +342,8 @@ class Config:
         template = False
 
     try:
-        search_type = 'newsgroup' if cfg.get(
-            'App Settings', 'search type') == 'newsgroup' else 'torrent'
+        search_type = 'nzb' if cfg.get(
+            'App Settings', 'search type') == 'nzb' else 'torrent'
     except configparser.NoOptionError:
         search_type = 'torrent'
 
